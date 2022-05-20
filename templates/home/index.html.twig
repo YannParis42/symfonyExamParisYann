@@ -18,12 +18,11 @@
                     <p>annonce active</p>
                     <p>{{product.createdAt|date('m F Y') }}</p>
                     <div class="d-flex">
+                        <a href="{{path('app_one_product',  {'id':product.id} )}}"
+                        class="btn btn-primary ">Détails</a>
 
                         <a href="{{path('app_product_desactivate',  {'id':product.id} )}}"
-                            class="btn btn-danger">Désactiver</a>
-
-                        <a href="{{path('app_one_product',  {'id':product.id} )}}"
-                            class="btn btn-primary ms-2">Détails</a>
+                            class="btn btn-danger ms-2">Désactiver</a>
 
                     </div>
 

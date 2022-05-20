@@ -41,7 +41,7 @@ class ProductRepository extends ServiceEntityRepository
 
     public function getProductByDate() {
         return $this->createQueryBuilder('p')
-        ->where('p.isActive = 0')
+        ->where('p.isActive = 1')
         ->orderBy('p.createdAt', 'desc')
         ->getQuery()->getResult();
     }

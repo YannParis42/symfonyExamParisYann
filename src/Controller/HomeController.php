@@ -21,7 +21,7 @@ private EntityManagerInterface $em, private PaginatorInterface $paginator)
     // public function index(): Response
     public function findByIsActive(Request $request): Response
         {
-            $qb = $this->productRepository->getQbAll();
+            $qb = $this->productRepository->getProductByDate();
 
             $pagination = $this->paginator->paginate(
                 $qb, /* LA QUERY */
@@ -30,9 +30,7 @@ private EntityManagerInterface $em, private PaginatorInterface $paginator)
             );
             
         // $productEntities = $this->productRepository->findBy(['isActive'=> 1]);
-        $productEntities = $this->productRepository->getProductByDate();
         return $this->render('home/index.html.twig', [
-            'products'=>$productEntities,
             'pagination' => $pagination,
         ]);
     }
