@@ -1,0 +1,26 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Tout les produits{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <h1>Tout les produits</h1>
+    {{ knp_pagination_render(pagination, "@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig") }}
+    <div class="row">
+        {% for product in pagination %}
+        <div class="card col-4 m-2" style="width: 18rem;">
+            <img src="{{product.imagePath}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">
+                    <a href="{{path('app_one_product',  {'id':product.id} )}}" class="btn btn-primary">Plus de détails</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

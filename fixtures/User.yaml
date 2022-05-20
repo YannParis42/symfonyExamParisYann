@@ -1,0 +1,13 @@
+App\Entity\User:
+
+# mot de passe coucou
+  user0:
+    email: 'tortuga4281@yahoo.fr'
+    roles: ['ROLE_ADMIN']
+    password: "\\$2y\\$13\\$M7PYtm15eStePXLz0WeNw.ZVUSqFy2Bn0txtwT/wmgmtaU3x86lnu"
+ 
+  user{1..49}:
+    email (unique): '<email()> '
+    roles: ['ROLE_USER'] 
+    password: "\\$2y\\$13\\$M7PYtm15eStePXLz0WeNw.ZVUSqFy2Bn0txtwT/wmgmtaU3x86lnu"
+    

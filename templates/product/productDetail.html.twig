@@ -1,0 +1,49 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-6">
+        <div class="card mt-2" style="width: 18rem;">
+            <img src={{product.imagePath}} class="card-img-top" alt="...">
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">Annonce déposé le: {{product.createdAt|date("l d F Y")}}</p>
+            <p class="card-text">Annonce déposé par: {{product.createdby.email}}</p>
+            {% if app.user.id == product.createdby.id %}
+            <a href="{{path('app_product_modify',  {'id':product.id} )}}" class="btn btn-primary">modifier</a>
+            <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal{{product.id}}" class="btn btn-danger">suprimer</a>
+
+
+             <!-- Modal -->
+             <div class="modal fade" id="exampleModal{{product.id}}" tabindex="-1"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div class="modal-dialog">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h5 class="modal-title" id="exampleModalLabel">Suppression</h5>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal"
+                             aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+                         Êtes vous sûr de vouloir supprimer {{product.name}} ?
+                     </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+                         <a href="{{path('app_product_delete', {'id': product.id })}}"
+                             class="btn btn-primary">Supprimer
+                             !</a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <!--End Modal -->
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

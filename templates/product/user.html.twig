@@ -1,0 +1,29 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Tout les produits{% endblock %}
+
+{% block body %}
+
+{% if products  %}
+<div class="container">
+    <h1>Mes produits</h1>
+    <div class="row">
+        {% for product in products %}
+        <div class="card col-4 m-2" style="width: 18rem;">
+            <img src="{{product.imagePath}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">
+                    <a href="{{path('app_one_product',  {'id':product.id} )}}" class="btn btn-primary">Plus de détails</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+<H2>Pas de produits</H2>
+
+{% endif %}
+
+
+{% endblock %}

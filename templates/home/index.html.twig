@@ -3,5 +3,33 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
- <p class="bg-primary"> <i class="fa-solid fa-trash-arrow-up"></i> </p>
-{% endblock %}
+<div class="container justify-content-around">
+
+    <h1>Accueil</h1>
+    {{ knp_pagination_render(pagination, "@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig") }}
+
+    <div class="row d-flex justify-conten-arround">
+        {% for product in pagination %}
+        <div class="card col-4 m-1" style="width: 18rem;">
+            <img src="{{product.imagePath}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">
+                    <p>annonce active</p>
+                    <p>{{product.createdAt|date('m F Y') }}</p>
+                    <div class="d-flex">
+
+                        <a href="{{path('app_product_desactivate',  {'id':product.id} )}}"
+                            class="btn btn-danger">Désactiver</a>
+
+                        <a href="{{path('app_one_product',  {'id':product.id} )}}"
+                            class="btn btn-primary ms-2">Détails</a>
+
+                    </div>
+
+            </div>
+        </div>
+        {% endfor %}
+        {{ knp_pagination_render(pagination, "@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig") }}
+    </div>
+    {% endblock %}

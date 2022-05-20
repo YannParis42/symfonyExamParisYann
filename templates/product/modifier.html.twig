@@ -1,0 +1,15 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Modification d'un produit'{% endblock %}
+
+{% block body %}
+
+{{ form_start(form) }}
+{{ form_row(form.name) }}
+{{ form_row(form.imagePath) }}
+
+
+<button type="submit" class="btn btn-success">Soumettre</button>
+{{ form_end(form) }}
+
+{% endblock %}
